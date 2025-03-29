@@ -1,6 +1,14 @@
 # NEW-NEMO
-update for NEMO
-
+update for NEMO:https://github.com/kaist-ina/nemo
+```
+@inproceedings{yeo2020nemo,
+  title={NEMO: enabling neural-enhanced video streaming on commodity mobile devices},
+  author={Yeo, Hyunho and Chong, Chan Ju and Jung, Youngmok and Ye, Juncheol and Han, Dongsu},
+  booktitle={Proceedings of the 26th Annual International Conference on Mobile Computing and Networking},
+  pages={1--14},
+  year={2020}
+}
+```
 ## Prerequisites
 We cannot provide this due to the Qualcom license policy.Please contract me!
 ## Guide
