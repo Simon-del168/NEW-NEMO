@@ -10,10 +10,16 @@ Because the time flies,many errors occured.So do some update.
 ```
 https://github.com/Simon-del168/NEW-NEMO/tree/main/Setup
 ```
-Build the image
-
-Run & Attach to the docker
-
+* Build the image
+```
+cd ${HOME}/Setup
+./build.sh
+```
+* Run & Attach to the docker
+```
+cd ${HOME}/Setup
+./run.sh
+```
 Download/Setup the Qualcomm SNPE SDK as follow:
 ```
 ./nemo
@@ -24,3 +30,8 @@ Download/Setup the Qualcomm SNPE SDK as follow:
 ./third_party
 ├── libvpx                 # C/C++: SR-integrated codec
 ```
+### 2. Prepare videos
+
+* Download a Youtube video
+
+* 
