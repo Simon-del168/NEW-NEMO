@@ -11,13 +11,12 @@ Build the image
 Run & Attach to the docker
 
 Download/Setup the Qualcomm SNPE SDK as follow:
+```
 ./nemo
-├── third_party
-    ├── snpe
-        ├── benchmarks
-        ├── bin
-        ├── include
-        ├── lib
-        ├── models
-        ├── share
-        ...
+├── video                  # Python: Video downloader/encoder
+├── dnn                    # Python: DNN trainer/converter
+├── cache_profile          # Python: Anchor point selector
+├── player                 # Java, C/C++: Android video player built upon Exoplayer and the SR-integrated codec
+./third_party
+├── libvpx                 # C/C++: SR-integrated codec
+```
