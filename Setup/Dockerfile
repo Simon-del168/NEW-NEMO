@@ -68,7 +68,7 @@ RUN ln -s /root/android-ndk-r26c/toolchains/llvm/prebuilt/linux-x86_64 /android-
 
 
 # 设置环境变量
-ENV NEMO_CODE_ROOT=/workspace/nemo
+ENV NEMO_CODE_ROOT=/workspace
 ENV NEMO_DATA_ROOT=/workspace/nemo-data
 ENV SNPE_ROOT=$NEMO_CODE_ROOT/third_party/snpe
 ENV PYTHONPATH=${NEMO_CODE_ROOT}:${SNPE_ROOT}/lib/python:${PYTHONPATH:-/default/path}
