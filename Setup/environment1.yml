@@ -1,0 +1,13 @@
+name: nemo_py3.10
+channels:
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - pip
+  - python=3.10
+  - cudatoolkit=11.2
+  - networkx
+  - imageio
+  - pip:
+       - tensorflow-gpu==2.11.0
