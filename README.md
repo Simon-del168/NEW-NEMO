@@ -6,6 +6,10 @@ We cannot provide this due to the Qualcom license policy.Please contract me!
 ## Guide
 Because the time flies,many errors occured.So do some update.
 ### 1.Setup
+* clone the docker contianer build repository
+```
+https://github.com/Simon-del168/NEW-NEMO/tree/main/Setup
+```
 Build the image
 
 Run & Attach to the docker
