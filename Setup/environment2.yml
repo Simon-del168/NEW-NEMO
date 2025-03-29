@@ -1,0 +1,8 @@
+name: nemo_py3.10_1
+dependencies:
+  - pip
+  - networkx
+  - python=3.10
+  - imageio
+  - pip:
+    - tensorflow==2.10.1
