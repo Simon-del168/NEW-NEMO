@@ -1,0 +1,79 @@
+// Copyright (C) 2018 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+apply from: '../constants.gradle'
+apply plugin: 'com.android.library'
+//import org.gradle.api.attributes.ArtifactType
+//import org.gradle.api.attributes.BuildTypeAttr
+//import org.gradle.api.attributes.AgpVersionAttr
+import org.gradle.api.attributes.Usage
+import org.gradle.api.attributes.Category
+android {
+    compileSdk 33
+    namespace = "com.google.android.exoplayer2.testutil.robolectric"
+   // buildToolsVersion project.ext.buildToolsVersion
+    //namespace = "com.example.exoplayernewlibvpx"
+    ndkVersion "26.2.11394342"
+    publishNonDefault true
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        // Robolectric depends on BouncyCastle, which depends on javax.naming,
+        // which is not part of Android.
+        disable 'InvalidPackage'
+    }
+}
+
+dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
+    api "org.robolectric:robolectric:4.10.3"
+    api project(':activity_player-testutils')
+    implementation project(':activity_player-library-core')
+    implementation "androidx.annotation:annotation:1.6.0"
+    implementation('com.google.guava:guava:33.1.0-android') {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+    //implementation project(':activity_player-testutils-robolectric')
+    //implementation "com.android.support:support-annotations:${rootProject.ext.supportLibraryVersion}"
+}
+
+// 配置 consumable configurations
+configurations {
+    api {
+        canBeConsumed = true
+        canBeResolved = false
+        attributes {
+            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage, "java-api"))
+            attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category, "library"))
+            //attribute('com.android.build.api.attributes.BuildTypeAttr', objects.named(BuildTypeAttr, 'debug'))
+            //attribute('com.android.build.api.attributes.BuildTypeAttr', 'debug')
+           // attribute('com.android.build.api.attributes.AgpVersionAttr', '8.0.0')
+        }
+    }
+}
+configurations.default {
+    attributes {
+        attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage, "java-runtime"))
+        attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category, "library"))
+//        attribute('org.gradle.api.attributes.ArtifactType', 'android-library')
+    }
+}

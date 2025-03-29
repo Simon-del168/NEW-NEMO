@@ -1,0 +1,71 @@
+// Copyright (C) 2017 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+apply from: '../../constants.gradle'
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 33
+    //buildToolsVersion project.ext.buildToolsVersion
+    //namespace = "com.example.exoplayernewlibvpx"
+    namespace = "com.google.android.exoplayer2.ext.ima"
+    testNamespace = "com.google.android.exoplayer2.ext.ima.test"
+    ndkVersion "26.2.11394342"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        consumerProguardFiles 'proguard-rules.txt'
+    }
+}
+repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
+    maven { url 'https://dl.google.com/dl/android/maven2/' }
+}
+dependencies {
+    api 'com.google.ads.interactivemedia.v3:interactivemedia:3.30.3'
+    implementation project(modulePrefix + 'library-core')
+    implementation 'com.google.android.gms:play-services-ads:17.1.2'
+    // These dependencies are necessary to force the supportLibraryVersion of
+    // com.android.support:support-v4 and com.android.support:customtabs to be
+    // used. Else older versions are used, for example via:
+    // com.google.android.gms:play-services-ads:17.1.2
+    // |-- com.android.support:customtabs:26.1.0
+    implementation 'com.android.support:support-v4:' + supportLibraryVersion
+    implementation 'com.android.support:customtabs:' + supportLibraryVersion
+    testImplementation 'com.google.truth:truth:' + truthVersion
+    testImplementation 'junit:junit:' + junitVersion
+    testImplementation 'org.mockito:mockito-core:' + mockitoVersion
+    testImplementation 'org.robolectric:robolectric:' + robolectricVersion
+    testImplementation project(modulePrefix + 'testutils-robolectric')
+    implementation('com.google.guava:guava:33.1.0-android') {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+}
+
+ext {
+    javadocTitle = 'IMA extension'
+}
+apply from: '../../javadoc_library.gradle'
+
+ext {
+    releaseArtifact = 'extension-ima'
+    releaseDescription = 'Interactive Media Ads extension for ExoPlayer.'
+}
+apply from: '../../publish.gradle'

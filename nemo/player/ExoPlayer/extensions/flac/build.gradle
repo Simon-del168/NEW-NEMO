@@ -1,0 +1,61 @@
+// Copyright (C) 2016 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+apply from: '../../constants.gradle'
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 33
+    //buildTools project.ext.buildToolsVersion
+    //minSdkVersion project.ext.minSdkVersion
+    namespace = "com.google.android.exoplayer2.ext.flac"
+    testNamespace = "com.google.android.exoplayer2.ext.flac.test"
+    //namespace = "com.example.exoplayernewlibvpx"
+    ndkVersion "26.2.11394342"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+        consumerProguardFiles 'proguard-rules.txt'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    sourceSets.main {
+        jniLibs.srcDir 'src/main/libs'
+        jni.srcDirs = [] // Disable the automatic ndk-build call by Android Studio.
+    }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.6.0'
+    androidTestImplementation 'androidx.test:runner:1.5.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'com.google.truth:truth:1.1.5'
+    //implementation 'com.android.support:support-annotations:' + supportLibraryVersion
+    implementation project(modulePrefix + 'library-core')
+    //androidTestImplementation 'androidx.test:runner:' + testRunnerVersion
+    androidTestImplementation project(modulePrefix + 'testutils')
+    implementation('com.google.guava:guava:33.1.0-android') {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+    testImplementation project(modulePrefix + 'testutils-robolectric')
+}
+
+ext {
+    javadocTitle = 'FLAC extension'
+}
+apply from: '../../javadoc_library.gradle'

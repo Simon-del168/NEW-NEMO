@@ -1,0 +1,46 @@
+// settings.gradle
+rootProject.name = 'ExoPlayerNewLibvpx'
+
+// 包含所有子项目
+include ':app'
+include ':activity_player-testutils_robolectric'
+include ':activity_player-testutils'
+project(':activity_player-testutils_robolectric').projectDir = new File(rootDir, 'ExoPlayer/testutils_robolectric')
+// 包括所有扩展模块
+include ':activity_player-extension-cast'
+include ':activity_player-extension-cronet'
+include ':activity_player-extension-ffmpeg'
+include ':activity_player-extension-flac'
+include ':activity_player-extension-gvr'
+include ':activity_player-extension-ima'
+include ':activity_player-extension-jobdispatcher'
+include ':activity_player-extension-leanback'
+include ':activity_player-extension-mediasession'
+include ':activity_player-extension-okhttp'
+include ':activity_player-extension-opus'
+include ':activity_player-extension-rtmp'
+include ':activity_player-extension-vp9'
+
+// 包含所有库模块
+include ':activity_player-library-core'
+include ':activity_player-library-ui'
+include ':activity_player-library-dash'
+include ':activity_player-library-hls'
+include ':activity_player-library-smoothstreaming'
+
+gradle.ext.exoplayerRoot = './ExoPlayer'
+gradle.ext.exoplayerModulePrefix = 'activity_player-'
+apply from: new File(gradle.ext.exoplayerRoot, 'core_settings.gradle')
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://repo.spring.io/plugins-release-local' }
+        maven { url 'https://mvnrepository.com/artifact/net.butterflytv.utils/rtmp-client' }
+        jcenter()
+    }
+}

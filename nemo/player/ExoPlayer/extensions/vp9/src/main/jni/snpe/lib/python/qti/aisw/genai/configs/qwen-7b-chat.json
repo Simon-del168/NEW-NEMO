@@ -1,0 +1,64 @@
+{
+    "general.name": "qwen-7b-chat",
+    "general.architecture": "qwen",
+    "general.tokenizer": "tiktoken",
+    "general.quantization_version" : 1,
+    "general.alignment" : 32,
+    "general.hf_hub_model_id": "QWen/Qwen-7B-Chat",
+    "size.vocabulary": 151936,
+    "size.context": 8192,
+    "size.embedding": 4096,
+    "size.feedforward": 11008,
+    "architecture.num_decoders": 32,
+    "architecture.num_heads": 32,
+    "architecture.num_kv_heads": 32,
+    "architecture.connector": "sequential",
+    "architecture.gating": "gated",
+    "operation.normalization": "RMS-norm",
+    "operation.normalization_epsilon": 1e-05,
+    "operation.activation": "SiLU",
+    "operation.positional_embedding": "RoPE",
+    "operation.rope_complex_organization": "SoA",
+    "operation.rope_num_rotations": 128,
+    "operation.rope_theta": 10000.0,
+    "tensor.layer_name": "transformer.h.(\\d+).",
+    "tensor.embedding_token_weight": {
+        "name": "transformer.wte.weight"
+    },
+    "tensor.attention_normalization_weight": {
+        "name": "ln_1.weight"
+    },
+    "tensor.attention_qkv_weight": {
+        "name": "attn.c_attn.weight",
+        "transposed": true
+    },
+    "tensor.attention_qkv_bias": {
+        "name": "attn.c_attn.bias"
+    },
+    "tensor.attention_output_weight": {
+        "name": "attn.c_proj.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_normalization_weight": {
+        "name": "ln_2.weight"
+    },
+    "tensor.feedforward_gate_weight": {
+        "name": "mlp.w2.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_up_weight": {
+        "name": "mlp.w1.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_output_weight": {
+        "name": "mlp.c_proj.weight",
+        "transposed": true
+    },
+    "tensor.output_normalization_weight": {
+        "name": "transformer.ln_f.weight"
+    },
+    "tensor.output_weight": {
+        "name": "lm_head.weight",
+        "transposed": true
+    }
+}

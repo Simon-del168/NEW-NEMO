@@ -1,0 +1,27 @@
+Param-Name,DataType,Param-Description,Optional /Mandatory,Possible values
+general.name,String,Model name in a readable form,Mandatory,
+general.architecture,String,Model global architecture,Optional,"generic , llama, qwen, gpt2. \ \ Default: generic"
+general.tokenizer,String,Tokenizer to use,Optional,"none, gpt2, llama, tiktoken. \ \ Default: none"
+general.alignment,Integer,Byte alignment for each tensor within the file,Optional,Default: 32
+general.hf_hub_model_id,String,specifying model identifier in the HuggingFace repository,Optional,
+general.output,String,Model's output,Optional,"logits, embeddings. \ \ Default: logits"
+size.vocabulary,Integer,Vocabulary size.,Mandatory,
+size.context,Integer,Maximum number of tokens the transformer will consider to predict the next token,Mandatory,
+size.embedding,Integer,Length of the embedding vector representing a token,Mandatory,
+size.feedforward,Integer,Size of the inner layer within the feed-forward network,Mandatory,
+architecture.num_decoders,Integer,Number of decoder layers,Mandatory,
+architecture.num_heads,Integer,Number of attention heads,Mandatory,
+architecture.connector,String,How the attention and feed-forward networks are connected to each other,Mandatory,"sequential, parallel"
+architecture.gating,String,Gating type of the transformer.,Mandatory,"gated, fully-connected"
+architecture.num_kv_heads,Integer,Number of attention heads for keys and values when they differ from queries,Optional,Default: num_heads
+operation.normalization,String,Normalization operator,Mandatory,"layernorm, RMS-norm"
+operation.activation,String,Non-linear activation operator for feed-forward,Mandatory,"ReLU, GeLU, SiLU"
+operation.positional_embedding,String,How positional information is handled,Mandatory,"WPE, RoPE"
+operation.rope_num_rotations,Integer,Number of elements to be affected by the rope operation,"Mandatory with ""RoPE""",
+operation.rope_complex_organization,String,How RoPE real and imaginary parts are expected to be organized in memory,"Mandatory with ""RoPE""","AoS, SoA"
+operation.rope_scaling,Floating point,Scaling factor for the RoPE operator,"Optional with ""RoPE""",Default: 10000.0f
+operation.normalization_epsilon,Floating point,Epsilon for the normalization operator,Optional,Default: 0.000001
+operation.attention_mode,String,How the model attends to previous and future tokens,Optional,"causal, bidirectional. \ \ Default: causal"
+tensor.layer_name,String,"The layer name prefix for layer tensors. ""(\d+)"" regex for the layer number.",Mandatory,
+name,String,Tensor name used in the model file,Mandatory,
+transposed,Boolean,Whether the tensor is transposed or not with respect to the standard matrix multiplication convention in linear algebra when the matrix is at the rigth hand side of the matrix multiplication,Optional,Default: False

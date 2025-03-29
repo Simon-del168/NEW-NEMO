@@ -1,0 +1,60 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.0'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
+        gradlePluginPortal()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://repo.spring.io/plugins-release-local' }
+        maven { url 'https://mvnrepository.com/artifact/net.butterflytv.utils/rtmp-client' }
+        maven {
+            url 'https://maven.google.com'
+        }
+        maven { url 'https://dl.google.com/dl/android/maven2/' } // Google Maven repository
+        maven {
+            url 'https://dl.bintray.com/googlevr/public' // 添加 Google VR 的仓库
+        }
+        maven {
+            url 'https://imasdk.googleapis.com/native/downloads/release/'
+        }
+        jcenter()
+    }
+    configurations.configureEach {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'com.google.guava' && details.requested.name == 'listenablefuture') {
+                details.useTarget 'com.google.guava:guava:33.1.0-android'
+            }
+        }
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+}
+
+ext {
+    robolectricVersion = '4.10.3' // 或其他合适版本
+    supportLibraryVersion = '33.0.0' // 或其他合适版本
+    compileSdkVersion = 33 // 或其他适合的版本
+    buildToolsVersion = '33.0.0' // 或其他适合的版本
+    minSdkVersion = 21 // 您的项目的最小 SDK 版本
+    targetSdkVersion = 33 // 或其他适合的版本
+    modulePrefix = '' // 如果使用模块前缀，确保在这里定义
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

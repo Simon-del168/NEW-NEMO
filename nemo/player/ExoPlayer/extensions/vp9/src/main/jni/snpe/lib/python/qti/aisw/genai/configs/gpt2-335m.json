@@ -1,0 +1,72 @@
+{
+    "general.name": "gpt2-335m",
+    "general.architecture": "gpt2",
+    "general.tokenizer": "gpt2",
+    "general.hf_hub_model_id": "openai-community/gpt2-medium",
+    "general.alignment" : 32,
+    "size.vocabulary": 50257,
+    "size.context": 1024,
+    "size.embedding": 1024,
+    "size.feedforward": 4096,
+    "architecture.num_decoders": 24,
+    "architecture.num_heads": 16,
+    "architecture.connector": "sequential",
+    "architecture.gating": "fully-connected",
+    "operation.normalization": "layernorm",
+    "operation.normalization_epsilon": 1e-05,
+    "operation.activation": "GeLU",
+    "operation.positional_embedding": "WPE",
+    "tensor.layer_name": "h.(\\d+).",
+    "tensor.embedding_token_weight": {
+        "name": "wte.weight"
+    },
+    "tensor.embedding_position_weight": {
+        "name": "wpe.weight"
+    },
+    "tensor.attention_normalization_weight": {
+        "name": "ln_1.weight"
+    },
+    "tensor.attention_normalization_bias": {
+        "name": "ln_1.bias"
+    },
+    "tensor.attention_qkv_weight": {
+        "name": "attn.c_attn.weight"
+    },
+    "tensor.attention_qkv_bias": {
+        "name": "attn.c_attn.bias"
+    },
+    "tensor.attention_output_weight": {
+        "name": "attn.c_proj.weight"
+    },
+    "tensor.attention_output_bias": {
+        "name": "attn.c_proj.bias"
+    },
+    "tensor.feedforward_normalization_weight": {
+        "name": "ln_2.weight"
+    },
+    "tensor.feedforward_normalization_bias": {
+        "name": "ln_2.bias"
+    },
+    "tensor.feedforward_gate_weight": {
+        "name": "mlp.c_fc.weight"
+    },
+    "tensor.feedforward_gate_bias": {
+        "name": "mlp.c_fc.bias"
+    },
+    "tensor.feedforward_output_weight": {
+        "name": "mlp.c_proj.weight"
+    },
+    "tensor.feedforward_output_bias": {
+        "name": "mlp.c_proj.bias"
+    },
+    "tensor.output_normalization_weight": {
+        "name": "ln_f.weight"
+    },
+    "tensor.output_normalization_bias": {
+        "name": "ln_f.bias"
+    },
+    "tensor.output_weight": {
+        "name": "lm_head.weight",
+        "transposed": true
+    }
+}

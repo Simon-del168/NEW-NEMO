@@ -1,0 +1,68 @@
+{
+    "general.name": "llama2-13b",
+    "general.architecture": "llama",
+    "general.tokenizer": "llama",
+    "general.quantization_version" : 1,
+    "general.alignment" : 32,
+    "general.hf_hub_model_id": "meta-llama/Llama-2-13b-hf",
+    "size.vocabulary": 32000,
+    "size.context": 1024,
+    "size.embedding": 5120,
+    "size.feedforward": 13824,
+    "architecture.num_decoders": 40,
+    "architecture.num_heads": 40,
+    "architecture.connector": "sequential",
+    "architecture.gating": "gated",
+    "operation.normalization": "RMS-norm",
+    "operation.normalization_epsilon": 1e-05,
+    "operation.activation": "SiLU",
+    "operation.positional_embedding": "RoPE",
+    "operation.rope_complex_organization": "SoA",
+    "operation.rope_num_rotations": 128,
+    "operation.rope_theta": 10000.0,
+    "tensor.layer_name": "model.layers.(\\d+).",
+    "tensor.embedding_token_weight": {
+        "name": "model.embed_tokens.weight"
+    },
+    "tensor.attention_normalization_weight": {
+        "name": "input_layernorm.weight"
+    },
+    "tensor.attention_q_weight": {
+        "name": "self_attn.q_proj.weight",
+        "transposed": true
+    },
+    "tensor.attention_k_weight": {
+        "name": "self_attn.k_proj.weight",
+        "transposed": true
+    },
+    "tensor.attention_v_weight": {
+        "name": "self_attn.v_proj.weight",
+        "transposed": true
+    },
+    "tensor.attention_output_weight": {
+        "name": "self_attn.o_proj.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_normalization_weight": {
+        "name": "post_attention_layernorm.weight"
+    },
+    "tensor.feedforward_gate_weight": {
+        "name": "mlp.gate_proj.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_up_weight": {
+        "name": "mlp.up_proj.weight",
+        "transposed": true
+    },
+    "tensor.feedforward_output_weight": {
+        "name": "mlp.down_proj.weight",
+        "transposed": true
+    },
+    "tensor.output_normalization_weight": {
+        "name": "model.norm.weight"
+    },
+    "tensor.output_weight": {
+        "name": "lm_head.weight",
+        "transposed": true
+    }
+}

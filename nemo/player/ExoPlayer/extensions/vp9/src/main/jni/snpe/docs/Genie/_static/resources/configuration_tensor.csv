@@ -1,0 +1,18 @@
+Tensor name,Tensor Type,Description
+embedding_token ,Model Tensor,Word token embedding tensor
+embedding_position ,Model Tensor,"Word position embedding tensor (not expected with ""RoPE"")"
+embedding_token_type ,Model Tensor,Segment distinction within the input sequence
+embedding_normalization ,Model Tensor,"Embedding normalization tensor (expected with ""sequential_post_layer_normalization"")"
+attention_normalization,Layer Tensor,Attention input normalization tensor
+attention_q ,Layer Tensor,Attention query tensor
+attention_k ,Layer Tensor,Attention key tensor
+attention_v ,Layer Tensor,Attention value tensor
+attention_qkv ,Layer Tensor,Fused attention query-key-value tensor 
+attention_output ,Layer Tensor,Attention output or projection tensor
+feedforward_normalization ,Layer Tensor,"Feed-forward input or post-attention normalization tensor (not expected when connector is ""parallel"")"
+feedforward_gate ,Layer Tensor,Feed-forward gate or fully-connected layer tensor
+feedforward_up ,Layer Tensor,"Feed-forward up tensor (not expected with ""fully-connected"")"
+feedforward_output ,Layer Tensor,Feedforward output or projection tensor or down tensor
+feedforward_output_normalization,Layer Tensor,Feedforward output normalization tensor
+output_normalization ,Model Tensor,"Output normalization tensor (not expected with ""sequential_post_layer_normalization"")"
+output ,Model Tensor,Output tensor
