@@ -38,6 +38,10 @@ cd ${HOME}/Setup
 cd ${HOME}/Setup
 ./run.sh
 ```
+* Clone the NEMO main repository
+```
+git clone --recurse-submodules https://github.com/Simon-del168/NEW-NEMO.git ${NEMO_CODE_ROOT}
+```
 Download/Setup the Qualcomm SNPE SDK as follow:
 ```
 ./nemo
